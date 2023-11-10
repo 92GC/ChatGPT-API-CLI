@@ -26,8 +26,9 @@ aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 
 # To do for back end
 - replacing json with db
+- pick a web framework flack, django, fastapi
 - unit test / e2e tests
-- deploying to aws with teraform
+- deploying to aws with terraform
 - edit pdf with code
 - map field name to box number and description
 - concatenate and insert pages
@@ -35,6 +36,7 @@ aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 - handle box overflows
 
 # To do for front end
+- sessions and cookies
 - live update pdf in ui
 - erase data in pdf
 - upload pdf
@@ -42,6 +44,13 @@ aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 - download pdf
 - running total of tax to pay
 - move domain name to aws
+- bots.txt for site map
+
+# Go live
+- payments integration
+- test under load
+- gorrila marketing
+- SEO
 
 ## Dyanmo db notes
 ```

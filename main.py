@@ -5,7 +5,7 @@ import read_write
 import talk_to_gpt
 import iht_logic
 import sys
-
+import boto3
 
 def get_user_id():
     return "1"
@@ -29,7 +29,25 @@ def generate_question(step):
 
 def conversation(client, step=0):
     user_id = get_user_id()
-    step = read_write.get_user_step(user_id)
+
+    # Initialize a DynamoDB client
+    dynamodb = boto3.resource('dynamodb', region_name='eu-west-2')
+
+    # Reference your table
+    table = dynamodb.Table('user_id_to_step')
+
+    step_get_response = table.get_item(
+        Key={
+            'user_id': f'{user_id}'
+        }
+    )
+    step = step_get_response.get('Item', {}).get('step', None)
+
+    # add error handling here eg not found or non 2XX error
+
+    print(step)
+
+    # step = read_write.get_user_step(user_id)
 
     question, secret_response = generate_question(step)
 

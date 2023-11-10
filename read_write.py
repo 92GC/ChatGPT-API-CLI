@@ -84,7 +84,7 @@ def get_questions(step):
     # Read the JSON file
     with open(json_file_path, 'r') as file:
         data = json.load(file)
-    print("hi")
+
     # Retrieve required_input and question for the given step
     required_input = data.get(str(step), {}).get("required_input", "")
     question = data.get(str(step), {}).get("question", "")

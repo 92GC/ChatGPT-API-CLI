@@ -62,5 +62,21 @@
     {
         "role": "assistant",
         "content": "Kernan Jay"
+    },
+    {
+        "role": "user",
+        "content": "Parse this string for a name: james dean, if no name is found or you are unsure only then return the following word IPPcbVRmHS else return the name and no other text. All names you return will be properly capitalised"
+    },
+    {
+        "role": "assistant",
+        "content": "James Dean"
+    },
+    {
+        "role": "user",
+        "content": "Parse this string for a name: James Dean, if no name is found or you are unsure only then return the following word h8UPOiUdsb else return the name and no other text. All names you return will be properly capitalised"
+    },
+    {
+        "role": "assistant",
+        "content": "James Dean"
     }
 ]

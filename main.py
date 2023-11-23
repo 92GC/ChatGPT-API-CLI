@@ -70,14 +70,29 @@ def delete_older_chats(directory):
         os.remove(os.path.join(directory, file))
 
 
-def find_most_recent_timestamp(directory):
+def find_most_recent_timestamps(directory):
     all_files = os.listdir(directory)
     timestamps = [datetime.strptime(file.split('_chat_history')[0], '%H-%M-%S_%d-%m-%Y')
                   for file in all_files if file.endswith('_chat_history.json') and '_' in file]
-    max_time = max(timestamps, default=None)
 
-    return max_time.strftime('%H-%M-%S_%d-%m-%Y') if max_time else None
-# todo Refactor to return ordered list
+    sorted_timestamps = sorted(timestamps, reverse=True)
+    return [time.strftime('%H-%M-%S_%d-%m-%Y') for time in sorted_timestamps]
+
+
+def select_chat_history(timestamps):
+    for i, timestamp in enumerate(timestamps, 1):
+        print(f"{i}. {timestamp}")
+
+    while True:
+        try:
+            choice = int(input("Enter the number of your chat: "))
+            if 1 <= choice <= len(timestamps):
+                return timestamps[choice - 1]
+            else:
+                print("Invalid number, please try again.")
+        except ValueError:
+            print("Please enter a valid number.")
+
 
 def handle_new_chat():
     start_new_chat = get_yes_or_no("Do you want to start a new chat? (y/n): ")
@@ -85,10 +100,10 @@ def handle_new_chat():
         delete_older_chats("chats/")
         set_chat_name()
     else:
-        most_recent_timestamp = find_most_recent_timestamp("chats/")
-        if most_recent_timestamp:
-            # todo Refactor to display and require numbered user input for chat
-            set_chat_name(previous=most_recent_timestamp)
+        timestamps = find_most_recent_timestamp("chats/")
+        if timestamps:
+            selected_timestamp = select_chat_history(timestamps)
+            set_chat_name(previous=selected_timestamp)
         else:
             print("No existing chats to load.")
             set_chat_name()

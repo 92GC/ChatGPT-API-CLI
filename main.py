@@ -24,7 +24,7 @@ def get_chat_name():
     return chat_timestamp
 
 
-def get_multiline_input(sentinel='EOF'):
+def get_multiline_input(sentinel='e'):
     print(f"Enter/paste your text. Press Cmd+d or type '{sentinel}' on a new line when done:")
     lines = []
     while True:

@@ -8,7 +8,7 @@
 ## Running
 
 1. Run `main.py`.
-2. When inputting your question or prompt, press `Cmd+d` or ensure it ends with a newline followed by `EOF`. This facilitates handling multi-line inputs in the terminal.
+2. When inputting your question or prompt, ensure it ends with a newline followed by `e`. This facilitates handling multi-line inputs in the terminal.
 
    For instance: Paste your question, press Enter, type `EOF`, and then press Enter again.
 

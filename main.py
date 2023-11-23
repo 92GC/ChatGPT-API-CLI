@@ -43,8 +43,7 @@ def get_multiline_input(sentinel='EOF'):
 
 
 def generate_question():
-
-    user_input = get_multiline_input(sentinel='EOF')
+    user_input = get_multiline_input()
     if user_input == "":
         print("Exiting chat.")
         sys.exit(0)
@@ -112,22 +111,22 @@ def handle_new_chat():
             set_chat_name()
 
 
-def conversation(client):
+def chat(client):
     chat_name = get_chat_name()
     question = generate_question()
 
-    conversation_history = read_write.set_text_conversation_history(question, chat_name)
-    latest_conversation = api_calls.make_text_request(conversation_history, question, client)
-    read_write.write_to_file(latest_conversation, f"chats/{chat_name}_chat_history.json")
+    chat_history = read_write.set_text_chat_history(question, chat_name)
+    latest_chat = api_calls.make_text_request(chat_history, question, client)
+    read_write.write_to_file(latest_chat, f"chats/{chat_name}_chat_history.json")
 
-    conversation(client)
+    chat(client)
 
 
 def start_up():
     load_dotenv()
     client = OpenAI()
     handle_new_chat()
-    conversation(client)
+    chat(client)
 
 
 if __name__ == '__main__':

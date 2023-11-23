@@ -1,91 +1,24 @@
-# Running
+# Setting up
 
 Add a .env file to root of project with OPENAI_API_KEY=
+
 Get the key from https://platform.openai.com/api-keys
 
-Configure your AWS credentials by creating an IAM user in AWS Console, generating access keys, and setting them up on your local machine. Boto3 will use these credentials to access AWS services.
+To set a default prompt for each chat add CHATGPT_INITIATION_PROMPT to your .env file
 
-It should be part of group `full_users`
-
-Store at `~/.aws/credentials`
-
-create:
-```
-[default]
-aws_access_key_id = YOUR_ACCESS_KEY_ID
-aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+For example:
+```commandline
+CHATGPT_INITIATION_PROMPT="You are a software engineer."
 ```
 
+#### Running
 
+run main.py
 
-#### Run
+Each time you input your question/prompt it must end in a new line with EOF. This allows the terminal to handle multiline inputs.
 
-`pip install boto3` (for AWS)
+For example: paste in your question and then press enter, then type EOF and then hit enter again.
 
-`pip install openai` (OpenAI)
+When the input has been parsed you with see "Input received."
 
-# To do for back end
-- replacing json with db
-- pick a web framework flack, django, fastapi
-- unit test / e2e tests
-- deploying to aws with terraform
-- edit pdf with code
-- map field name to box number and description
-- concatenate and insert pages
-- how to merge front and back end hooks
-- handle box overflows
-
-# To do for front end
-- sessions and cookies
-- live update pdf in ui
-- erase data in pdf
-- upload pdf
-- upload image
-- download pdf
-- running total of tax to pay
-- move domain name to aws
-- bots.txt for site map
-
-# Go live
-- payments integration
-- test under load
-- gorrila marketing
-- SEO
-
-## Dyanmo db notes
-```
-# Add an item (Put)
-response = table.put_item(
-   Item={
-        'yourPrimaryKey': 'key1',
-        'value': 123
-    }
-)
-
-# Get an item (Get)
-response = table.get_item(
-    Key={
-        'yourPrimaryKey': 'key1'
-    }
-)
-item = response['Item']
-print(item)
-
-# Update an item
-table.update_item(
-    Key={
-        'yourPrimaryKey': 'key1'
-    },
-    UpdateExpression='SET value = :val',
-    ExpressionAttributeValues={
-        ':val': 456
-    }
-)
-
-# Delete an item
-table.delete_item(
-    Key={
-        'yourPrimaryKey': 'key1'
-    }
-)
-```
+Press enter to close the chat after you are finished.

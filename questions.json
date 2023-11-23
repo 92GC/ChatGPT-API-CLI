@@ -1,6 +1,0 @@
-{
-    "0": {
-        "required_input": "Please enter your name: ",
-        "question": "Parse this string for a name: {sanitized_user_input}, if no name is found or you are unsure only then return the following word {secret_response} else return the name and no other text. All names you return will be properly capitalised"
-    }
-}

@@ -1,13 +1,14 @@
 import read_write
+import os
 
 
-def text_chat(question, client, user_id, set_up_prompt=None, model=None):
-    # Read the existing conversation history
-    conversation_history = read_write.read_conversation_history(f"{user_id}_conversation_history.json")
-
+def text_chat(question, client, chat_name, set_up_prompt=None, model=None):
+    file_path = f"{chat_name}_conversation_history.json"
+    conversation_history = read_write.read_conversation_history(file_path)
     # Add the system message if the history is empty
-    if not conversation_history:
-        conversation_history.append({"role": "system", "content": "You are a name parser when extract and return the name from a message you are sent."})
+    if not conversation_history and "CHATGPT_INITIATION_PROMPT" in os.environ:
+        system_prompt = os.environ.get("CHATGPT_INITIATION_PROMPT")
+        conversation_history.append({"role": "system", "content": system_prompt})
 
     # Append the user's question to the conversation history
     conversation_history.append({"role": "user", "content": question})

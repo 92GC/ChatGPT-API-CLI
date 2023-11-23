@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from openai import OpenAI
 import read_write
-import api
+import api_calls
 import sys
 from datetime import datetime
 import os
@@ -97,7 +97,7 @@ def conversation(client):
     question = generate_question()
 
     conversation_history = read_write.set_text_conversation_history(question, chat_name)
-    latest_conversation = api.make_text_request(conversation_history, question, client)
+    latest_conversation = api_calls.make_text_request(conversation_history, question, client)
     read_write.write_to_file(latest_conversation, f"chats/{chat_name}_chat_history.json")
 
     conversation(client)

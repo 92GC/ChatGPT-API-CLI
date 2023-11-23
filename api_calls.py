@@ -1,5 +1,3 @@
-
-
 def make_text_request(conversation_history, question, client, set_up_prompt=None, model=None):
 
     # Get the response from GPT

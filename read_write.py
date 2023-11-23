@@ -1,5 +1,4 @@
 import json
-import os
 
 
 def write_to_file(latest_conversation, filename):

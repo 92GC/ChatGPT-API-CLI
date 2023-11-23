@@ -47,7 +47,7 @@ def get_yes_or_no(prompt):
             print("Please enter 'yes' or 'no'.")
 
 
-def new_chat_or_not():
+def handle_new_chat():
     new_chat = get_yes_or_no("Do you want to start a new chat? (y/n): ")
     if new_chat:
         read_write.delete_file(f"{get_chat_name()}_chat_history.json")
@@ -67,7 +67,7 @@ def conversation(client):
 def start_up():
     load_dotenv()
     client = OpenAI()
-    new_chat_or_not()
+    handle_new_chat()
 
     conversation(client)
 

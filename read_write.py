@@ -46,8 +46,7 @@ def set_text_conversation_history(question, chat_name):
         system_prompt = read_file("gpt_initiation_prompt.txt","No initiation prompt found.")
         if system_prompt:
             conversation_history.append({"role": "system", "content": system_prompt})
-            read_conversation_history(file_path)
-            write_to_file(conversation_history, f"{chat_name}_chat_history.json")
+            write_to_file(conversation_history, file_path)
     # Append the user's question to the conversation history
     conversation_history.append({"role": "user", "content": question})
     return conversation_history

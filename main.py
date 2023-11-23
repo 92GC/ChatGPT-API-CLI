@@ -102,7 +102,10 @@ def handle_new_chat():
     else:
         timestamps = find_most_recent_timestamps("chats/")
         if timestamps:
-            selected_timestamp = select_chat_history(timestamps)
+            if len(timestamps) == 1:
+                selected_timestamp = timestamps[0]
+            else:
+                selected_timestamp = select_chat_history(timestamps)
             set_chat_name(previous=selected_timestamp)
         else:
             print("No existing chats to load.")

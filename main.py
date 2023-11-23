@@ -72,16 +72,11 @@ def delete_older_chats(directory):
 
 def find_most_recent_timestamp(directory):
     all_files = os.listdir(directory)
-    chat_files = [file for file in all_files if file.endswith('_chat_history.json')]
-    timestamps = [datetime.strptime(file.split('_chat_history')[0], '%H-%M-%S_%d-%m-%Y') for file in chat_files]
-    max_time = max(timestamps) if timestamps else None
+    timestamps = [datetime.strptime(file.split('_chat_history')[0], '%H-%M-%S_%d-%m-%Y')
+                  for file in all_files if file.endswith('_chat_history.json') and '_' in file]
+    max_time = max(timestamps, default=None)
 
-    return max_time
-
-    if max_time:
-        return max_time.strftime('%H-%M-%S_%d-%m-%Y')
-    else:
-        return None
+    return max_time.strftime('%H-%M-%S_%d-%m-%Y') if max_time else None
 
 
 def handle_new_chat():

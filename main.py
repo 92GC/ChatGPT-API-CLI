@@ -50,14 +50,17 @@ def get_yes_or_no(prompt):
 def new_chat_or_not():
     new_chat = get_yes_or_no("Do you want to start a new chat? (y/n): ")
     if new_chat:
-        read_write.delete_conversation_history(f"{get_chat_name()}_chat_history.json")
+        read_write.delete_file(f"{get_chat_name()}_chat_history.json")
 
 
 def conversation(client):
     chat_name = get_chat_name()
     question = generate_question()
-    latest_conversation, response_content = api.text_chat(question, client, chat_name)
+
+    conversation_history = read_write.set_text_conversation_history(question, chat_name)
+    latest_conversation = api.make_text_request(conversation_history, question, client)
     read_write.write_to_file(latest_conversation, f"{chat_name}_chat_history.json")
+
     conversation(client)
 
 

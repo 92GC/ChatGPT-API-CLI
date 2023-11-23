@@ -25,7 +25,7 @@ def get_chat_name():
 
 
 def get_multiline_input(sentinel='EOF'):
-    print(f"Enter/paste your text. Type '{sentinel}' on a new line when done:")
+    print(f"Enter/paste your text. Press Cmd+d or type '{sentinel}' on a new line when done:")
     lines = []
     while True:
         try:
@@ -100,7 +100,7 @@ def handle_new_chat():
         delete_older_chats("chats/")
         set_chat_name()
     else:
-        timestamps = find_most_recent_timestamp("chats/")
+        timestamps = find_most_recent_timestamps("chats/")
         if timestamps:
             selected_timestamp = select_chat_history(timestamps)
             set_chat_name(previous=selected_timestamp)

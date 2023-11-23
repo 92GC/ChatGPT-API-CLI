@@ -2,7 +2,8 @@
 
 1. Add a `.env` file to the root of your project with `OPENAI_API_KEY=`.
 2. Obtain the key from [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys).
-3. To set your default prompt, edit **gpt_initiation_prompt.txt**.
+3. Even if it says you have free credit you need to buy some credit to gain access.
+4. To set your default prompt, edit **gpt_initiation_prompt.txt**.
 
 ## Running
 

@@ -18,3 +18,5 @@ For example: paste in your question and then press enter, then type EOF and then
 When the input has been parsed you with see "Input received." in the terminal.
 
 Press enter to close the chat after you are finished.
+
+The 10th oldest chat will be deleted to minimise disk space consumption.

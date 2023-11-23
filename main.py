@@ -77,7 +77,7 @@ def find_most_recent_timestamp(directory):
     max_time = max(timestamps, default=None)
 
     return max_time.strftime('%H-%M-%S_%d-%m-%Y') if max_time else None
-
+# todo Refactor to return ordered list
 
 def handle_new_chat():
     start_new_chat = get_yes_or_no("Do you want to start a new chat? (y/n): ")
@@ -87,8 +87,10 @@ def handle_new_chat():
     else:
         most_recent_timestamp = find_most_recent_timestamp("chats/")
         if most_recent_timestamp:
+            # todo Refactor to display and require numbered user input for chat
             set_chat_name(previous=most_recent_timestamp)
         else:
+            print("No existing chats to load.")
             set_chat_name()
 
 

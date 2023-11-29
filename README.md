@@ -10,7 +10,7 @@
 1. Run `main.py`.
 2. When inputting your question or prompt, ensure it ends with a newline followed by `e`. This facilitates handling multi-line inputs in the terminal.
 
-   For instance: Paste your question, press Enter, type `EOF`, and then press Enter again.
+   For instance: Paste your question, press Enter, type `e`, and then press Enter again.
 
 3. Once the input is parsed, "Input received." will appear in the terminal.
 4. Press Enter to close the chat when you are finished.
